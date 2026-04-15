@@ -10,7 +10,7 @@ def main():
     setup_logging()
 
     # 1. matches
-    df_matches = get_matches(HEADERS, league_season_list)
+    df_matches = get_matches(HEADERS, LEAGUE_SEASON_LIST)
 
     df_matches = df_matches.fillna("")
     df_matches["date"] = df_matches["date"].astype(str)
