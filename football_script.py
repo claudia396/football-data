@@ -11,25 +11,25 @@ def main():
     # 1. matches
     df_matches = get_matches(HEADERS, league_season_list)
 
-	df_matches = df_matches.fillna("")
-	df_matches["date"] = df_matches["date"].astype(str)
+    df_matches = df_matches.fillna("")
+    df_matches["date"] = df_matches["date"].astype(str)
 
     match_ids = df_matches["match_id"].tolist()
 
     # 2. stats
     df_stats = get_stats(HEADERS, match_ids)
 
-	df_stats_filtered = df_stats[df_stats["period"] == "ALL"].copy()
+    df_stats_filtered = df_stats[df_stats["period"] == "ALL"].copy()
 
-	df_stats_filtered = df_stats_filtered[
-		["match_id", "group", "key", "home_value", "away_value"]
-	]
+    df_stats_filtered = df_stats_filtered[
+	    ["match_id", "group", "key", "home_value", "away_value"]
+    ]
 
-	df_stats_filtered = df_stats_filtered.drop_duplicates(
-		subset=["match_id", "key"]
-	)
+    df_stats_filtered = df_stats_filtered.drop_duplicates(
+	    subset=["match_id", "key"]
+    )
 
-	df_stats_filtered = df_stats_filtered.fillna("")
+    df_stats_filtered = df_stats_filtered.fillna("")
 
     # 3. sheets
     ws_matches, ws_stats = connect_sheets(
