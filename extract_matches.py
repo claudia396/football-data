@@ -36,15 +36,32 @@ def get_matches(headers, league_season_list):
     df = pd.concat(dfs, ignore_index=True)
 
     cols = [
-        "id","startTimestamp","tournament.id","tournament.name",
-        "season.id","season.year","homeTeam.name","awayTeam.name",
-        "homeScore.current","awayScore.current","status.type"
+        "id",
+        "startTimestamp",
+        "tournament.category.id",
+        "tournament.category.name",
+        "tournament.id",
+        "tournament.name",
+        "season.id",
+        "season.year",
+        "roundInfo.round",
+        "homeTeam.id",
+        "homeTeam.name",
+        "homeTeam.nameCode",
+        "awayTeam.id",
+        "awayTeam.name",
+        "awayTeam.nameCode",
+        "homeScore.current",
+        "awayScore.current",
+        "status.type",
+        "winnerCode",
+        "homeRedCards",
+        "awayRedCards"
     ]
 
     df = df[cols]
 
     df["date"] = pd.to_datetime(df["startTimestamp"], unit="s")
-    df["score"] = (df["homeScore.current"].astype(str) + " - " + df["awayScore.current"].astype(str))
 
     df = df[df["status.type"] == "finished"]
 
