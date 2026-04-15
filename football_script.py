@@ -11,6 +11,9 @@ def main():
     # 1. matches
     df_matches = get_matches(HEADERS, league_season_list)
 
+	df_matches = df_matches.fillna("")
+	df_matches["date"] = df_matches["date"].astype(str)
+
     match_ids = df_matches["match_id"].tolist()
 
     # 2. stats
@@ -25,6 +28,8 @@ def main():
 	df_stats_filtered = df_stats_filtered.drop_duplicates(
 		subset=["match_id", "key"]
 	)
+
+	df_stats_filtered = df_stats_filtered.fillna("")
 
     # 3. sheets
     ws_matches, ws_stats = connect_sheets(
