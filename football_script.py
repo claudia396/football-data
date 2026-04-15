@@ -3,6 +3,7 @@ from config import HEADERS, SPREADSHEET_ID, LEAGUE_SEASON_LIST
 from extract_matches import get_matches
 from extract_stats import get_stats
 from load_sheets import connect_sheets
+from utils import setup_logging
 
 def main():
 
