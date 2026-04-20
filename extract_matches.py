@@ -63,7 +63,13 @@ def get_matches(headers, league_season_list):
 
     df["date"] = pd.to_datetime(df["startTimestamp"], unit="s")
 
-    df = df[df["status.type"] == "finished"]
+    hoy = datetime.utcnow()
+    hace_7_dias = hoy - timedelta(days=7)
+
+    df = df[
+        (df["status.type"] == "finished") &
+        (df["date"] >= hace_7_dias)
+    ]
 
     df = df.rename(columns={"id": "match_id"})
 
