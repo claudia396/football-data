@@ -8,9 +8,6 @@ HEADERS = {
     "Content-Type": "application/json"
 }
 
-COUNTRIES = ["England", "Spain", "Italy", "Germany", "Brazil"]
-LEAGUES = ["Premier League", "Serie A", "Bundesliga", "LaLiga", "Brasileirão Betano"]
-
 SPREADSHEET_ID = "1IBl07cmoESePyLCSTB2cKzHq8nIU9cbkuscCzh-SmF8"
 
 LEAGUE_SEASON_LIST = [
