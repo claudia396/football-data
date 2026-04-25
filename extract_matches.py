@@ -38,10 +38,10 @@ def get_matches(headers, league_season_list):
     cols = [
         "id",
         "startTimestamp",
-        "tournament.category.id",
-        "tournament.category.name",
-        "tournament.id",
-        "tournament.name",
+        "uniquetournament.category.id",
+        "uniquetournament.category.name",
+        "uniquetournament.id",
+        "uniquetournament.name",
         "season.id",
         "season.year",
         "roundInfo.round",
@@ -63,13 +63,7 @@ def get_matches(headers, league_season_list):
 
     df["date"] = pd.to_datetime(df["startTimestamp"], unit="s")
 
-    hoy = datetime.utcnow()
-    hace_10_dias = hoy - timedelta(days=10)
-
-    df = df[
-        (df["status.type"] == "finished") &
-        (df["date"] >= hace_10_dias)
-    ]
+    df = df[df["status.type"] == "finished"]
 
     df = df.rename(columns={"id": "match_id"})
 
