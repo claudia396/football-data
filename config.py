@@ -1,6 +1,6 @@
 import os
 
-API_KEY = "TU_API_KEY"
+API_KEY = os.getenv("API_KEY")
 
 HEADERS = {
     "x-rapidapi-key": API_KEY,
