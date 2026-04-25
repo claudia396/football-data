@@ -15,6 +15,7 @@ def main():
 
     df_matches = df_matches.fillna("")
     df_matches["date"] = df_matches["date"].astype(str)
+	df_matches = df_matches.drop_duplicates(subset=["match_id"])
 
     # 2. sheets
     ws_matches, ws_stats = connect_sheets(
