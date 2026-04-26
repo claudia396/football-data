@@ -6,6 +6,7 @@ from load_sheets import connect_sheets
 from utils import setup_logging
 import pandas as pd
 
+
 def main():
 
     setup_logging()
