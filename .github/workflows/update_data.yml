@@ -1,5 +1,6 @@
 name: Update Football Data
 
+
 on:
   schedule:
     - cron: '0 6 * * 1'  # lunes 6 AM UTC
